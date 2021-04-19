@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+//FONT
+@font-face {
+  font-family: "MyFont";
+  src: url("../Font/851MkPOP_100.woff") format("woff"), 
+  url("../Font/851MkPOP_100.ttf") format("opentype");
+}
+
 // 関数
 
 $bg:#c9d6b1;
@@ -13,6 +20,8 @@ $text-hover:#7C6640;
 
 $G:Georgia, 'Times New Roman', Times, serif;
 $A:Arial, Helvetica, sans-serif;
+$M:MyFont, sans-serif;
+
 
 
 
@@ -30,6 +39,41 @@ $A:Arial, Helvetica, sans-serif;
   }
 };
 
+@mixin title($sub,$position-top,$position-right){
+  font-family: $G;
+  @include f_around
+  (40, 50, 400, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+  &::after{
+    content: $sub;
+    @include f_around(20, 50, 400, 0);
+    margin-left: 10px;
+  }
+  &::before{
+    content: "";
+    width: 400px;
+    height: 2px;
+    background: $yellow;
+    position: absolute;
+    right: $position-right;
+    top: $position-top;
+  }
+  @media(max-width:768px){
+    font-size: 36px;
+    &::after{
+      font-size: 16px;
+    }
+    &::before{
+      width: 60vw;
+    }
+  
+}
+}
+
 //共有
 
 html{
@@ -41,7 +85,7 @@ body{
   box-sizing: border-box;
   color: $text;
   font-family: $A;
-
+  
 }
 
 
@@ -50,6 +94,9 @@ body{
   background: $nav;
   width: 100vw;
   height: 60px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
   &__nav--ul{
     max-width: 1044px;
     width: 90%;
@@ -201,4 +248,300 @@ body{
     }
   }
 
+}
+
+/*-- FV --*/
+.fv{
+  margin-top: 60px;
+  &__container{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1304px;
+    width: 90%;
+    margin: 50px auto;
+    padding-top: 50px;
+    position: relative;
+    img{
+      width: 45vw;
+      min-width: 400px;
+      // height: 100vh;
+      object-fit: cover;
+    }
+    .wrapper{
+      position:absolute;
+      top: 50%;
+      right: 5%;
+      margin-right: 20px;
+      transform: translateY(-50%)
+    }
+
+    &--title{
+      border: 1px solid $bg2;
+      width: 436px;
+      height: 332px;
+      padding: 25px 30px;
+      position: relative;
+      background: white;
+      h1{
+        font-family: $A;
+        color: #707070;
+        @include f_around(20, 30, 700, 0);
+        span{
+          letter-spacing: 200;
+        }
+        margin-bottom: 56px;
+      }
+      h2{
+        font-family: $G;
+        color: $text;
+        @include f_around(40, 55, 400, 0);
+        margin-bottom: 40px;
+        .mb{
+          display: none;
+        }
+      }
+      button{
+        border-radius: 10px;
+        background: $btn;
+        width: 120px;
+        height: 40px;
+        text-align: center;
+        &:hover{
+          background: $bg;
+        }
+        a{
+          width: 100%;
+        }
+        p{
+          font-family: $A;
+          color: white;
+          @include f_around(14, 40, 400, 0);
+          &:hover{
+            color: $text-hover;
+          }
+        }
+      }
+      &::after{
+        content: "";
+        width: 436px;
+        height: 332px;
+        background: $bg2;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        z-index: -1;
+        
+      }
+    }
+  }
+
+  @media(max-width:768px){
+    &__container{
+      &--title{
+        width: 280px;
+        height: 368px;
+        h1{
+          font-size: 14px;
+          margin-bottom: 20px;
+        }
+        h2{
+          font-size: 36px;
+          margin-bottom: 20px;
+          .mb{
+            display: block;
+          }
+        }
+        &::after{
+          width: 280px;
+          height: 368px;
+          top: 30px;
+          left: 30px;
+        }
+      }
+    }
+  }
+
+  @media(max-width:450px){
+    background: url(../image/fv2.png)no-repeat center/cover;
+    width: 100vw;
+    height: 100vh;
+    &__container{
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      img{
+        display: none;
+      }
+      .wrapper{
+        top: 50%;
+        right: 50%;
+        margin-right: 0;
+        transform: translate(50%,-50%);
+      }
+      &--title{
+        &::after{
+          top: 20px;
+          left: 20px;
+        }
+      }
+
+    }
+  }
+}
+
+/*--About me--*/
+.about{
+  &__container{
+    max-width: 1400px;
+    width: 95%;
+    background: $bg;
+    padding: 158px 196px 158px 100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &--text{
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      margin-right: 60px;
+      width: 600px;
+  
+      &-title{
+        @include title("-なにものなのか-", 50px, 0);
+        margin-bottom: 36px;
+        white-space: nowrap;
+        justify-content: flex-end;
+
+   
+      }
+
+      &-name{
+        @include f_around(30, 30, 400, 0);
+        font-family: $M;
+        margin-bottom: 28px;
+        span{
+          a{
+            width: 100%;
+          }
+          margin-right: 10px;
+          color:$yellow;
+          &:hover{
+            color: $bg2
+          }
+        }
+      }
+      &-desc{
+        @include f_around(19, 30, 400, 0);
+        font-family: $M;
+      }
+
+      &-img{
+        display: none;
+      }
+    }
+    img{
+      width: 27vw;
+      min-width: 300px;
+    }
+  }
+
+  @media(max-width:1020px){
+    &__container{
+      padding: 120px;
+      flex-direction: column;
+      &--text{
+        text-align: center;
+        margin-right: 0;
+        margin-bottom:60px;
+        width: auto;
+        &-title{
+          justify-content: center;
+          margin-bottom: 60px;
+          &::before{
+            right: auto;
+          }
+        }
+        &-img{
+          display: block;
+          margin: 0 auto;
+          margin-bottom: 50px;
+        }
+      }
+      .pc-img{
+        display: none;
+      }
+      }
+  }
+
+}
+
+
+/*--Service--*/
+.service{
+  &__container{
+    width: 90vw;
+    margin: 0 auto;
+    padding: 120px 20px;
+    
+    &--title{
+      @include title("-わたしにできること-", 50px, auto);
+      margin-bottom: 100px;
+    }
+    &--items{
+      display: flex;
+      justify-content: center;
+
+      .item{
+        width: 310px;
+        border: 1px solid $nav;
+        display: flex;
+        flex-direction: column;
+        margin-right: 24px;
+        margin-bottom: 40px;
+        padding: 5px;
+        &:last-of-type{
+          margin-right: 0;
+        }
+        img{
+          width: 231px;
+          flex: 50%;
+          margin: 50px auto;
+        }
+        &-text{
+          background: $bg;
+          padding: 20px;
+          height: 100%;
+          &-title{
+            @include f_around(35, 50, 400, 0);
+            font-family: $A;
+            text-align: center;
+            margin-bottom: 20px;
+           
+          }
+          &-desc{
+            @include f_around(14, 24, 400, 0);
+          }
+        }
+      }
+    }
+    &--desc{
+      @include f_around(14, 20, 400, 0);
+      text-align: center;
+      p{
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  @media(max-width:768px){
+  
+    &__container--items{
+      flex-direction: column;
+      align-items: center;
+      .item{
+        margin-right: 0;
+      }
+    }
+  }
 }
