@@ -72,7 +72,38 @@ $M:MyFont, sans-serif;
     }
   
 }
-}
+};
+
+@mixin card{    
+  img{
+    max-width: 350px;
+    width: (350/1440)*100vw;
+    max-height: 220px;
+    height: (220/1440)*100vw;
+    object-fit: cover;
+    
+  }
+  .text{
+    padding: 10px 20px;
+    background: $gray;
+    color: white;
+    max-width: 350px;
+    width: (350/1440)*100vw;
+    max-height: 130px;
+    height: (130/1440)*100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+     .title{
+      @include f_around(14, 14, 700, 0);
+      margin-bottom: 8px;
+    }
+    .desc{
+      @include f_around(12, 16, 400, 0);
+    }
+  }
+  
+};
 
 //共有
 
@@ -504,14 +535,14 @@ body{
           margin-right: 0;
         }
         img{
-          width: 231px;
+          width: 100px;
           flex: 50%;
           margin: 50px auto;
         }
         &-text{
           background: $bg;
           padding: 20px;
-          height: 100%;
+          height: 300px;
           &-title{
             @include f_around(35, 50, 400, 0);
             font-family: $A;
@@ -541,6 +572,165 @@ body{
       align-items: center;
       .item{
         margin-right: 0;
+      }
+    }
+  }
+}
+
+
+/*--Works--*/
+.works{
+  
+  &__container{
+    max-width: 1400px;
+    width: 95vw;
+    margin: 0 auto;
+    padding-bottom: 120px;
+    &--title{
+      @include title("-いままでつくったもの-", 50px, auto);
+      margin-bottom: 100px;
+     
+    }
+    &--practice{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: $bg2;
+      margin-bottom: 50px;
+      padding: 30px 40px;
+      &-text{
+        max-width: 320px;
+        margin-right: 20px;
+        .title{
+          @include f_around(28, 50, 700, 0);
+          margin-bottom: 50px;
+          text-align: center
+        }
+        .desc{
+          @include f_around(18, 30, 400, 0);
+        }
+      }
+      &-items{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        .card{
+         @include card();
+        }
+      }
+    }
+
+    &--biz{
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      justify-content: space-around;
+      background: $bg2;
+      padding: 30px 40px;
+      &-text{
+        max-width: 320px;
+        margin-left: 40px;
+        .title{
+          @include f_around(28, 50, 700, 0);
+          margin-bottom: 50px;
+          text-align: center
+        }
+        .desc{
+          @include f_around(18, 30, 400, 0);
+        }
+      }
+      &-items{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        .card{
+          @include card();
+        }
+      }
+    }
+  }
+
+  @media(max-width:1020px){
+    &__container{
+      &--practice{
+        flex-direction: column;
+        padding-top: 80px;
+        padding-bottom: 70px;
+        &-text{
+          max-width: 650px;
+          margin-bottom: 30px;
+          margin-right: 0;
+        }
+        &-items{
+          .card{
+            img{
+              min-width: 300px;
+              min-height: 170px;
+            }
+            .text{
+              min-width: 300px;
+              min-height: 80px;
+            }
+          }
+        }
+      }
+      &--biz{
+        flex-direction: column;
+        padding-top: 80px;
+        padding-bottom: 70px;
+        &-text{
+          max-width: 650px;
+          margin-bottom: 30px;
+          margin-left: 0;
+        }
+        &-items{
+          .card{
+            img{
+              min-width: 300px;
+              min-height: 180px;
+            }
+            .text{
+              min-width: 300px;
+              min-height: 80px;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  @media(max-width:768px){
+    &__container{
+      &--practice{
+        &-items{
+          grid-template-columns: 1fr;
+          .card{
+            img{
+              max-width: none;
+              width:(600/768)*100vw;
+            }
+            .text{
+              max-width: none;
+              width:(600/768)*100vw;
+            }
+          }
+        }
+      }
+      &--biz{
+        &-items{
+          grid-template-columns: 1fr;
+          .card{
+            img{
+              max-width: none;
+              width:(600/768)*100vw;
+            }
+            .text{
+              max-width: none;
+              width:(600/768)*100vw;
+            }
+          }
+        }
       }
     }
   }
