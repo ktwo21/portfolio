@@ -1,3 +1,4 @@
+//ハンバーガーメニュー
 
 const jsHamburger = document.getElementById('js-hamburger');
 //buttonタグ（ハンバーガーボタン）を定数として定義
@@ -29,4 +30,34 @@ jsHamburger.addEventListener('click',function(){
     spHeaderMenu.setAttribute('area-hidden','true')
     //ハンバーガーメニューに隠れてますという要素を付与する
   };
+});
+
+//ふわっと表示
+
+AOS.init();
+
+//Google form
+$(document).ready(function () {
+
+  $('#form').submit(function (event) {
+    var formData = $('#form').serialize();
+    $.ajax({
+      url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSerOw_iY5xE481T73CP_rfC1kD2ulyun8NhViVMRN4OItnnvw/formResponse",
+      data: formData,
+      type: "POST",
+      dataType: "xml",
+      statusCode: {
+        0: function () {
+          $(".end-message").slideDown();
+          $(".submit-btn").fadeOut();
+          window.location.href = "thanks.html";
+        },
+        200: function () {
+          $(".false-message").slideDown();
+        }
+      }
+    });
+    event.preventDefault();
+  });
+
 });

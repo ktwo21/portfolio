@@ -1,0 +1,68 @@
+/*--Service--*/
+.service{
+  &__container{
+    width: 90vw;
+    margin: 0 auto;
+    padding: 120px 20px;
+    
+    &--title{
+      @include title("-わたしにできること-", 50px, auto);
+      margin-bottom: 100px;
+    }
+    &--items{
+      display: flex;
+      justify-content: center;
+
+      .item{
+        width: 310px;
+        border: 1px solid $nav;
+        display: flex;
+        flex-direction: column;
+        margin-right: 24px;
+        margin-bottom: 40px;
+        padding: 5px;
+        &:last-of-type{
+          margin-right: 0;
+        }
+        img{
+          width: 100px;
+          flex: 50%;
+          margin: 50px auto;
+        }
+        &-text{
+          background: $bg;
+          padding: 20px;
+          height: 300px;
+          &-title{
+            @include f_around(35, 50, 400, 0);
+            font-family: $A;
+            text-align: center;
+            margin-bottom: 20px;
+           
+          }
+          &-desc{
+            @include f_around(14, 24, 400, 0);
+          }
+        }
+      }
+    }
+    &--desc{
+      @include f_around(14, 20, 400, 0);
+      text-align: center;
+      p{
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  @media(max-width:768px){
+  
+    &__container--items{
+      flex-direction: column;
+      align-items: center;
+      .item{
+        margin-right: 0;
+      }
+    }
+  }
+}

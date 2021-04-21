@@ -1,0 +1,87 @@
+
+/*--About me--*/
+.about{
+  &__container{
+    max-width: 1400px;
+    width: 95%;
+    background: $bg;
+    padding: 158px 196px 158px 100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &--text{
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      margin-right: 60px;
+      width: 600px;
+  
+      &-title{
+        @include title("-なにものなのか-", 50px, 0);
+        margin-bottom: 36px;
+        white-space: nowrap;
+        justify-content: flex-end;
+
+   
+      }
+
+      &-name{
+        @include f_around(30, 30, 400, 0);
+        font-family: $M;
+        margin-bottom: 28px;
+        span{
+          a{
+            width: 100%;
+          }
+          margin-right: 10px;
+          color:$yellow;
+          &:hover{
+            color: $bg2
+          }
+        }
+      }
+      &-desc{
+        @include f_around(16, 30, 400, 0);
+        font-family: $A;
+      }
+
+      &-img{
+        display: none;
+      }
+    }
+    img{
+      width: 27vw;
+      min-width: 300px;
+    }
+  }
+
+  @media(max-width:1020px){
+    &__container{
+      padding: 120px;
+      flex-direction: column;
+      &--text{
+        text-align: center;
+        margin-right: 0;
+        margin-bottom:60px;
+        width: auto;
+        &-title{
+          justify-content: center;
+          margin-bottom: 60px;
+          &::before{
+            right: auto;
+          }
+        }
+        &-img{
+          display: block;
+          margin: 0 auto;
+          margin-bottom: 50px;
+        }
+      }
+      .pc-img{
+        display: none;
+      }
+      }
+  }
+
+}

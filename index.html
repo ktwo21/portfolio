@@ -8,16 +8,19 @@
     <!-- 検索結果に表示される説明文 -->
     <meta name="description" content="2児パパデザイナー かわづしんじ のポートフォリオサイトです">
     <!-- ファビコン -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./image/favicon.ico" type="image/x-icon">
     <!-- reset CSS -->
     <link rel="stylesheet" href="./CSS/reset.css">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- custom CSS -->
     <link rel="stylesheet" href="./CSS/style.css">
   </head>
   <body>
 
+
     <!-- ヘッダーナビゲーション -->
-   <header class="header">
+   <header class="header"  data-aos="fade-down" data-aos-duration="2000">
 
     <!-- PC nav -->
      <nav class="header__nav">
@@ -52,9 +55,9 @@
    <!-- FV -->
    <section class="fv">
      <div class="fv__container">
-       <img src="./image/fv2.png" alt="FV">
+       <img src="./image/fv2.png" alt="FV" data-aos="fade-right"  data-aos-duration="2000">
 
-       <div class="wrapper">
+       <div class="wrapper"  data-aos="fade-up" data-aos-duration="2000">
 
          <div class="fv__container--title">
           <h1><span>”まごころ”</span>こめて　寄り添います</h1>
@@ -71,7 +74,7 @@
 
    <!-- About me -->
    <section id="about" class="about">
-    <div class="about__container">
+    <div class="about__container"  data-aos="fade-up" data-aos-duration="2000">
       <div class="about__container--text">
        <h2 class="about__container--text-title">
          About Me
@@ -96,8 +99,8 @@
    </section>
 
    <!-- Service -->
-   <section id="service" class="service">
-     <div class="service__container">
+   <section id="service" class="service" >
+     <div class="service__container"  data-aos="fade-up" data-aos-duration="2000">
        <h2 class="service__container--title">
          Service
        </h2>
@@ -146,21 +149,26 @@
    <!-- Works -->
    <section id="works" class="works">
     <div class="works__container">
-      <h2 class="works__container--title">Works</h2>
-      <article class="works__container--practice">
+      <h2 class="works__container--title"  data-aos="fade-up" data-aos-duration="2000">Works</h2>
+      <article class="works__container--practice"  data-aos="fade-up" data-aos-duration="2000">
         <div class="works__container--practice-text">
           <p class="title">
             デザインカンプからの<br>コーディング
           </p>
           <p class="desc">
-            学習の中で制作した、デザインカンプをもとにしたコーディングです。<br>
-            デザインカンプ通りに組み上げることはもちろん、コーディングも保守しやすいように命名規則を使い、その後のことも考えてコーディングしています。
+            学習の中でデザインカンプをもとにコーディングした、WEBサイトです。
+            <br><br>
+            デザインカンプを提供くださいました<br><a href="https://shogo-log.com/" target="_blank" rel="noopener noreferrer">"しょーご様"</a>、<a href="https://crestadesign.org/" target="_blank" rel="noopener noreferrer">"クリスタ様"</a><br>ありがとうございました。
+            
+          
+            
           </p>
         </div>
 
         <div class="works__container--practice-items">
 
           <div class="card">
+            <a href="https://ktwo21.github.io/portfolio-01/" target="_blank" rel="noopener noreferrer"></a>
             <img src="./image/shogo1.png" alt="しょーごさん課題１">
             <div class="text">
               <p class="title">コーディング代行会社【仮想】</p>
@@ -172,6 +180,7 @@
           </div><!--card1-->
 
           <div class="card">
+            <a href="https://ktwo21.github.io/portfolio-02/index.html" target="_blank" rel="noopener noreferrer"></a>
             <img src="./image/shogo2.png" alt="しょーごさん課題２">
             <div class="text">
               <p class="title">歯科医院【仮想】</p>
@@ -183,6 +192,7 @@
           </div><!--card2-->
 
           <div class="card">
+            <a href="https://ktwo21.github.io/portfolio-03/" target="_blank" rel="noopener noreferrer"></a>
             <img src="./image/cresta1.png" alt="クリスタ課題１">
             <div class="text">
               <p class="title">WEB制作会社【仮想】</p>
@@ -194,6 +204,7 @@
           </div><!--card3-->
 
           <div class="card">
+            <a href="https://ktwo21.github.io/portfolio-04/" target="_blank" rel="noopener noreferrer"></a>
             <img src="./image/cresta2.png" alt="クリスタ課題２">
             <div class="text">
               <p class="title">空間デザイン会社【仮想】</p>
@@ -210,14 +221,14 @@
       </article><!--practice-->
 
 
-      <article class="works__container--biz">
+      <article class="works__container--biz"  data-aos="fade-up" data-aos-duration="2000">
         <div class="works__container--biz-text">
           <p class="title">
             WEBサイト作成
           </p>
           <p class="desc">
-            実際にご依頼いただいた制作物です。<br>
-            見た目だけでなく、見やすさや親しみやすさ、行動したくなるような仕組みを意識して制作しています。
+            実際に公開されている制作物です。<br>
+            デザイン面では、見た目だけでなく、見やすさや親しみやすさ、行動したくなるような仕組みを意識して制作しています。
           </p>
         </div>
 
@@ -234,7 +245,7 @@
             </div>
           </div><!--card1-->
 
-          <div class="card">
+          <!-- <div class="card">
             <img src="./image/higashi.jpg" alt="ひがし音楽教室">
             <div class="text">
               <p class="title">ひがし音楽教室</p>
@@ -243,7 +254,7 @@
                   制作時間：企画から公開まで２か月
                 </p>
             </div>
-          </div><!--card2-->
+          </div>card2 -->
 
         </div>
 
@@ -252,6 +263,54 @@
     </div>
    </section>
 
+   <!-- Contact -->
+   <section id="contact" class="contact">
+     <div class="contact__container"  data-aos="fade-up" data-aos-duration="2000">
+       <h2 class="contact__container--title">
+         Contact
+       </h2>
+       <p class="contact__container--disc">
+        制作のご依頼やご相談などお気軽にご連絡ください。
+        通常24時間以内の返信をさせていただきます。
+        <br><br>
+        また、TwitterのDMからのご連絡でもかまいません。<br>
+        フランクなお問い合わせは是非ご利用くださいませ！（Twitterアカウントは<a href="https://twitter.com/du_papa2127">こちら</a>）
+       </p>
+
+       <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSerOw_iY5xE481T73CP_rfC1kD2ulyun8NhViVMRN4OItnnvw/formResponse" id="form">
+
+        <div>
+          <label for="name">お名前</label>
+          <input type="text" id="name" placeholder="ニックネームでも構いません" name="entry.1268424802" required>
+        </div>
+
+        <div>
+          <label for="email">メールアドレス</label>
+          <input type="email" id="email" placeholder="example@sample.com" name="entry.806452913" required>
+        </div>
+        
+        <div class="wrapper">
+          <div class="message">
+            <label for="message">メッセージ</label>
+            <textarea id="message" placeholder="こちらにご依頼やご質問・ご相談などご入力ください" name="entry.1188577824" required></textarea>
+          </div>
+        </div>
+
+        <p class="end-message">お問い合わせありがとうございました</p>
+       <p class="false-message">送信失敗です</p>
+
+        <input type="submit" value="送信" class="submit-btn">
+        <p>確認画面はございませんので、今一度入力内容をご確認ください</p>
+        
+       </form>
+     </div>
+   </section>
+
+   <!-- Footer -->
+   <footer class="footer">
+     <small>&copy; 2021 Shinji Kawazu</small>
+   </footer>
+
 
 
    <!-- FONT Awesome -->
@@ -259,6 +318,11 @@
 
     <!-- jQuery -->
     <script src="./JS/jquery.min.js"></script>
+
+    <!-- AOS.js -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+   <!-- Custom JS -->
     <script src="./JS/style.js"></script>
   </body>
 </html>

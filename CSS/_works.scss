@@ -1,0 +1,163 @@
+/*--Works--*/
+.works{
+  padding-top: 100px;
+  &__container{
+    max-width: 1400px;
+    width: 95vw;
+    margin: 0 auto;
+    padding-bottom: 120px;
+    &--title{
+      @include title("-いままでつくったもの-", 50px, auto);
+      margin-bottom: 100px;
+     
+    }
+    &--practice{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: $bg2;
+      margin-bottom: 50px;
+      padding: 30px 40px;
+      &-text{
+        max-width: 320px;
+        margin-right: 20px;
+        .title{
+          @include f_around(28, 50, 700, 0);
+          margin-bottom: 50px;
+          text-align: center
+        }
+        .desc{
+          @include f_around(18, 30, 400, 0);
+          a{
+            color: $gray;
+            &:hover{
+              color: $text-hover;
+            }
+          }
+        }
+      }
+      &-items{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        .card{
+         @include card();
+        }
+      }
+    }
+
+    &--biz{
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      justify-content: space-around;
+      background: $bg2;
+      padding: 30px 40px;
+      &-text{
+        max-width: 320px;
+        margin-left: 40px;
+        .title{
+          @include f_around(28, 50, 700, 0);
+          margin-bottom: 50px;
+          text-align: center
+        }
+        .desc{
+          @include f_around(18, 30, 400, 0);
+        }
+      }
+      &-items{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        .card{
+          @include card();
+        }
+      }
+    }
+  }
+
+  @media(max-width:1020px){
+    &__container{
+      &--practice{
+        flex-direction: column;
+        padding-top: 80px;
+        padding-bottom: 70px;
+        &-text{
+          max-width: 650px;
+          margin-bottom: 30px;
+          margin-right: 0;
+        }
+        &-items{
+          .card{
+            img{
+              min-width: 300px;
+              min-height: 170px;
+            }
+            .text{
+              min-width: 300px;
+              min-height: 80px;
+            }
+          }
+        }
+      }
+      &--biz{
+        flex-direction: column;
+        padding-top: 80px;
+        padding-bottom: 70px;
+        &-text{
+          max-width: 650px;
+          margin-bottom: 30px;
+          margin-left: 0;
+        }
+        &-items{
+          .card{
+            img{
+              min-width: 300px;
+              min-height: 180px;
+            }
+            .text{
+              min-width: 300px;
+              min-height: 80px;
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  @media(max-width:768px){
+    &__container{
+      &--practice{
+        &-items{
+          grid-template-columns: 1fr;
+          .card{
+            img{
+              max-width: none;
+              width:(600/768)*100vw;
+            }
+            .text{
+              max-width: none;
+              width:(600/768)*100vw;
+            }
+          }
+        }
+      }
+      &--biz{
+        &-items{
+          grid-template-columns: 1fr;
+          .card{
+            img{
+              max-width: none;
+              width:(600/768)*100vw;
+            }
+            .text{
+              max-width: none;
+              width:(600/768)*100vw;
+            }
+          }
+        }
+      }
+    }
+  }
+}

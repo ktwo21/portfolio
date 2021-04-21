@@ -74,7 +74,15 @@ $M:MyFont, sans-serif;
 }
 };
 
-@mixin card{    
+@mixin card{   
+  position: relative;
+  a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  } 
   img{
     max-width: 350px;
     width: (350/1440)*100vw;
@@ -112,6 +120,9 @@ html{
   scroll-behavior: smooth;
 }
 
+*{
+  transition: all 0.3s;
+}
 body{
   box-sizing: border-box;
   color: $text;
@@ -120,616 +131,74 @@ body{
 }
 
 
-/*--- ヘッダーナビゲーション --*/
-.header{
-  background: $nav;
-  width: 100vw;
-  height: 60px;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  &__nav--ul{
-    max-width: 1044px;
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
 
-    li{
-      margin-right: 30px;
-      &:last-of-type{
-        margin-right: 0;
+@import "header";
+
+@import "fv";
+
+
+@import "about";
+
+@import "service";
+
+@import "works";
+
+@import "contact";
+
+
+@import "footer";
+
+.thanks{
+  padding-top: 80px;
+  
+  &__container{
+    background: url(../image/fv2.png)no-repeat center/cover;
+    padding: 100px 50px;
+    margin: 0 auto;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    img{
+      width: 70vw;
+      height: 200px;
+      object-fit: cover;
+      opacity: 0.7;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    &--title{
+      @include f_around(20, 30, 400, 0);
+      color: $text;
+      margin-bottom: 40px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    button{
+      border-radius: 10px;
+      background: $btn;
+      width: 120px;
+      height: 40px;
+      text-align: center;
+      position: relative;
+      &:hover{
+        background: $bg;
       }
       a{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      p{
+        font-family: $A;
         color: white;
-        @include f_around(16, 60, 400, 0);
+        @include f_around(14, 40, 400, 0);
         &:hover{
           color: $text-hover;
-        }
-      }
-    }
-  }
-  
-  .button {
-    display: none;
-    text-decoration: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-  }
-  
-  
-  .hamburger {
-    position: fixed;
-    top: 10px;
-    right: 20px;
-    z-index: 3;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 1px solid white;
-    box-shadow: 0 0 2rem transparent;
-    outline: none;
-    -webkit-transition: all .3s ease-in-out;
-            transition: all .3s ease-in-out;
-    &:hover,
-    &:focus {  
-    box-shadow: 0 0 .5rem rgba(161, 161, 161, 0.5);
-  }
-  }
-  
-  
-  .hamburger__line {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    width: 18px;
-    height: 2px;
-    background-color: white;
-    -webkit-transition: inherit;
-            transition: inherit;
-    &::before,
-    &::after {
-      position: absolute;
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-color: inherit;
-      content: '';
-      -webkit-transition: inherit;
-              transition: inherit;
-    }
-  }
-  
-  .hamburger__line::before {
-    top: -5px;
-  }
-  .hamburger__line::after {
-    top: 5px;
-  }
-  .hamburger[aria-expanded="true"] {
-    border: 1px solid #fff!important;
-  }
-  .hamburger[aria-expanded="true"] .hamburger__line {
-    background-color: transparent;
-    &::before,
-    &::after {
-    top: 0;
-    background-color: white;
-  }
-  }
-  .hamburger[aria-expanded="true"] .hamburger__line::before {
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-  }
-  
-  .hamburger[aria-expanded="true"] .hamburger__line::after {
-    -webkit-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-  }
-  
-  .sp-global-menu {
-    position: fixed;
-    width: 100vw;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-    height: 100vh;
-    background-color: $bg;
-    color: #fff;
-    visibility: hidden;
-
-    nav{
-      ul{
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        li{
-          margin-bottom: 30px;
-          a{
-            color: white;
-            @include f_around(18, 18, 400, 0);
-            &:hover{
-              color: $text-hover;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  @media(max-width:768px){
-    &__nav--ul{
-      display: none;
-    }
-    .button{
-      display: inline-block;
-    }
-  }
-
-}
-
-/*-- FV --*/
-.fv{
-  margin-top: 60px;
-  &__container{
-    display: flex;
-    justify-content: space-between;
-    max-width: 1304px;
-    width: 90%;
-    margin: 50px auto;
-    padding-top: 50px;
-    position: relative;
-    img{
-      width: 45vw;
-      min-width: 400px;
-      // height: 100vh;
-      object-fit: cover;
-    }
-    .wrapper{
-      position:absolute;
-      top: 50%;
-      right: 5%;
-      margin-right: 20px;
-      transform: translateY(-50%)
-    }
-
-    &--title{
-      border: 1px solid $bg2;
-      width: 436px;
-      height: 332px;
-      padding: 25px 30px;
-      position: relative;
-      background: white;
-      h1{
-        font-family: $A;
-        color: #707070;
-        @include f_around(20, 30, 700, 0);
-        span{
-          letter-spacing: 200;
-        }
-        margin-bottom: 56px;
-      }
-      h2{
-        font-family: $G;
-        color: $text;
-        @include f_around(40, 55, 400, 0);
-        margin-bottom: 40px;
-        .mb{
-          display: none;
-        }
-      }
-      button{
-        border-radius: 10px;
-        background: $btn;
-        width: 120px;
-        height: 40px;
-        text-align: center;
-        &:hover{
-          background: $bg;
-        }
-        a{
-          width: 100%;
-        }
-        p{
-          font-family: $A;
-          color: white;
-          @include f_around(14, 40, 400, 0);
-          &:hover{
-            color: $text-hover;
-          }
-        }
-      }
-      &::after{
-        content: "";
-        width: 436px;
-        height: 332px;
-        background: $bg2;
-        position: absolute;
-        top: 50px;
-        left: 50px;
-        z-index: -1;
-        
-      }
-    }
-  }
-
-  @media(max-width:768px){
-    &__container{
-      &--title{
-        width: 280px;
-        height: 368px;
-        h1{
-          font-size: 14px;
-          margin-bottom: 20px;
-        }
-        h2{
-          font-size: 36px;
-          margin-bottom: 20px;
-          .mb{
-            display: block;
-          }
-        }
-        &::after{
-          width: 280px;
-          height: 368px;
-          top: 30px;
-          left: 30px;
-        }
-      }
-    }
-  }
-
-  @media(max-width:450px){
-    background: url(../image/fv2.png)no-repeat center/cover;
-    width: 100vw;
-    height: 100vh;
-    &__container{
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      img{
-        display: none;
-      }
-      .wrapper{
-        top: 50%;
-        right: 50%;
-        margin-right: 0;
-        transform: translate(50%,-50%);
-      }
-      &--title{
-        &::after{
-          top: 20px;
-          left: 20px;
-        }
-      }
-
-    }
-  }
-}
-
-/*--About me--*/
-.about{
-  &__container{
-    max-width: 1400px;
-    width: 95%;
-    background: $bg;
-    padding: 158px 196px 158px 100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    &--text{
-      text-align: right;
-      display: flex;
-      flex-direction: column;
-      margin-right: 60px;
-      width: 600px;
-  
-      &-title{
-        @include title("-なにものなのか-", 50px, 0);
-        margin-bottom: 36px;
-        white-space: nowrap;
-        justify-content: flex-end;
-
-   
-      }
-
-      &-name{
-        @include f_around(30, 30, 400, 0);
-        font-family: $M;
-        margin-bottom: 28px;
-        span{
-          a{
-            width: 100%;
-          }
-          margin-right: 10px;
-          color:$yellow;
-          &:hover{
-            color: $bg2
-          }
-        }
-      }
-      &-desc{
-        @include f_around(19, 30, 400, 0);
-        font-family: $M;
-      }
-
-      &-img{
-        display: none;
-      }
-    }
-    img{
-      width: 27vw;
-      min-width: 300px;
-    }
-  }
-
-  @media(max-width:1020px){
-    &__container{
-      padding: 120px;
-      flex-direction: column;
-      &--text{
-        text-align: center;
-        margin-right: 0;
-        margin-bottom:60px;
-        width: auto;
-        &-title{
-          justify-content: center;
-          margin-bottom: 60px;
-          &::before{
-            right: auto;
-          }
-        }
-        &-img{
-          display: block;
-          margin: 0 auto;
-          margin-bottom: 50px;
-        }
-      }
-      .pc-img{
-        display: none;
-      }
-      }
-  }
-
-}
-
-
-/*--Service--*/
-.service{
-  &__container{
-    width: 90vw;
-    margin: 0 auto;
-    padding: 120px 20px;
-    
-    &--title{
-      @include title("-わたしにできること-", 50px, auto);
-      margin-bottom: 100px;
-    }
-    &--items{
-      display: flex;
-      justify-content: center;
-
-      .item{
-        width: 310px;
-        border: 1px solid $nav;
-        display: flex;
-        flex-direction: column;
-        margin-right: 24px;
-        margin-bottom: 40px;
-        padding: 5px;
-        &:last-of-type{
-          margin-right: 0;
-        }
-        img{
-          width: 100px;
-          flex: 50%;
-          margin: 50px auto;
-        }
-        &-text{
-          background: $bg;
-          padding: 20px;
-          height: 300px;
-          &-title{
-            @include f_around(35, 50, 400, 0);
-            font-family: $A;
-            text-align: center;
-            margin-bottom: 20px;
-           
-          }
-          &-desc{
-            @include f_around(14, 24, 400, 0);
-          }
-        }
-      }
-    }
-    &--desc{
-      @include f_around(14, 20, 400, 0);
-      text-align: center;
-      p{
-        margin-bottom: 20px;
-      }
-    }
-  }
-
-  @media(max-width:768px){
-  
-    &__container--items{
-      flex-direction: column;
-      align-items: center;
-      .item{
-        margin-right: 0;
-      }
-    }
-  }
-}
-
-
-/*--Works--*/
-.works{
-  
-  &__container{
-    max-width: 1400px;
-    width: 95vw;
-    margin: 0 auto;
-    padding-bottom: 120px;
-    &--title{
-      @include title("-いままでつくったもの-", 50px, auto);
-      margin-bottom: 100px;
-     
-    }
-    &--practice{
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      background: $bg2;
-      margin-bottom: 50px;
-      padding: 30px 40px;
-      &-text{
-        max-width: 320px;
-        margin-right: 20px;
-        .title{
-          @include f_around(28, 50, 700, 0);
-          margin-bottom: 50px;
-          text-align: center
-        }
-        .desc{
-          @include f_around(18, 30, 400, 0);
-        }
-      }
-      &-items{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        .card{
-         @include card();
-        }
-      }
-    }
-
-    &--biz{
-      display: flex;
-      align-items: center;
-      flex-direction: row-reverse;
-      justify-content: space-around;
-      background: $bg2;
-      padding: 30px 40px;
-      &-text{
-        max-width: 320px;
-        margin-left: 40px;
-        .title{
-          @include f_around(28, 50, 700, 0);
-          margin-bottom: 50px;
-          text-align: center
-        }
-        .desc{
-          @include f_around(18, 30, 400, 0);
-        }
-      }
-      &-items{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        .card{
-          @include card();
-        }
-      }
-    }
-  }
-
-  @media(max-width:1020px){
-    &__container{
-      &--practice{
-        flex-direction: column;
-        padding-top: 80px;
-        padding-bottom: 70px;
-        &-text{
-          max-width: 650px;
-          margin-bottom: 30px;
-          margin-right: 0;
-        }
-        &-items{
-          .card{
-            img{
-              min-width: 300px;
-              min-height: 170px;
-            }
-            .text{
-              min-width: 300px;
-              min-height: 80px;
-            }
-          }
-        }
-      }
-      &--biz{
-        flex-direction: column;
-        padding-top: 80px;
-        padding-bottom: 70px;
-        &-text{
-          max-width: 650px;
-          margin-bottom: 30px;
-          margin-left: 0;
-        }
-        &-items{
-          .card{
-            img{
-              min-width: 300px;
-              min-height: 180px;
-            }
-            .text{
-              min-width: 300px;
-              min-height: 80px;
-            }
-          }
-        }
-      }
-
-    }
-  }
-
-  @media(max-width:768px){
-    &__container{
-      &--practice{
-        &-items{
-          grid-template-columns: 1fr;
-          .card{
-            img{
-              max-width: none;
-              width:(600/768)*100vw;
-            }
-            .text{
-              max-width: none;
-              width:(600/768)*100vw;
-            }
-          }
-        }
-      }
-      &--biz{
-        &-items{
-          grid-template-columns: 1fr;
-          .card{
-            img{
-              max-width: none;
-              width:(600/768)*100vw;
-            }
-            .text{
-              max-width: none;
-              width:(600/768)*100vw;
-            }
-          }
         }
       }
     }
