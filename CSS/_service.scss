@@ -1,5 +1,6 @@
 /*--Service--*/
 .service{
+  transition: all 0.3s;
   &__container{
     width: 90vw;
     margin: 0 auto;

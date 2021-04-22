@@ -1,6 +1,7 @@
 
 /*--About me--*/
 .about{
+  transition: all 0.3s;
   &__container{
     max-width: 1400px;
     width: 95%;

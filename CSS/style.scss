@@ -47,6 +47,7 @@ $M:MyFont, sans-serif;
   align-items: center;
   justify-content: center;
   position: relative;
+  white-space: nowrap;
   
   &::after{
     content: $sub;
@@ -120,9 +121,6 @@ html{
   scroll-behavior: smooth;
 }
 
-*{
-  transition: all 0.3s;
-}
 body{
   box-sizing: border-box;
   color: $text;
